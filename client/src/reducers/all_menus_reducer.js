@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   errorMsg: ''
 };
 
-const menuReducer = (state = INITIAL_STATE, { type, payload }) => {
+const allMenusReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case FETCH_MENUS_DATA_REQUEST:
       return {
@@ -32,4 +32,4 @@ const menuReducer = (state = INITIAL_STATE, { type, payload }) => {
   }
 };
 
-export default menuReducer;
+export default allMenusReducer;

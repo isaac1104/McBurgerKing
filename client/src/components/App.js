@@ -1,6 +1,6 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import { fetchMenuData } from '../actions';
+import { fetchMenusData } from '../actions';
 import Loader from './Loader/Loader';
 import Sidebar from './Sidebar/Sidebar';
 import MenuModal from './MenuModal/MenuModal';
@@ -9,11 +9,11 @@ const Home = lazy(() => import('./Home/Home'));
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchMenuData();
+    this.props.fetchMenusData();
   }
 
   renderHomeComponent() {
-    const { is_fetching } = this.props.menu;
+    const { is_fetching } = this.props.menus;
     if (is_fetching) {
       return <Loader msg='Fetching Menu Data' />;
     }
@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   renderSidebar() {
-    const { data } = this.props.menu;
+    const { data } = this.props.menus;
     if (data) {
       return <Sidebar />;
     }
@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   renderMenuModal() {
-    const { data } = this.props.menu;
+    const { data } = this.props.menus;
     if (data) {
       return <MenuModal />;
     }
@@ -51,10 +51,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ menu }) => {
+const mapStateToProps = ({ menus }) => {
   return {
-    menu
+    menus
   };
 };
 
-export default connect(mapStateToProps, { fetchMenuData })(App);
+export default connect(mapStateToProps, { fetchMenusData })(App);

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import menuReducer from './menu_reducer';
+import allMenusReducer from './all_menus_reducer';
 import uiVisibilityReducer from './ui_visibility_reducer';
 
 const rootReducer = combineReducers({
-  menu: menuReducer,
+  menus: allMenusReducer,
   ui_visibility: uiVisibilityReducer
 });
 

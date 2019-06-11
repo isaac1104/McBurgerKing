@@ -9,7 +9,7 @@ const { Title } = Typography;
 
 class Home extends Component {
   renderMenuCard() {
-    const { data } = this.props.menu;
+    const { data } = this.props.menus;
     if (data) {
       return data.map(({ id, type, description, img }) => (
         <Col key={id} xs={24} sm={24} md={24} lg={8} xl={8}>
@@ -47,9 +47,9 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ menu, ui_visibility }) => {
+const mapStateToProps = ({ menus, ui_visibility }) => {
   return {
-    menu,
+    menus,
     ui_visibility
   };
 };

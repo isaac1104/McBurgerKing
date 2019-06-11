@@ -25,7 +25,7 @@ const fetchDataFail = ({ type, payload }) => ({
   payload
 });
 
-export const fetchMenuData = () => async dispatch => {
+export const fetchMenusData = () => async dispatch => {
   dispatch(fetchDataRequest({ type: FETCH_MENUS_DATA_REQUEST, payload: true }));
   try {
     const request = await axios.get('/api/data');
@@ -33,6 +33,21 @@ export const fetchMenuData = () => async dispatch => {
     dispatch(fetchDataSuccess({ type: FETCH_MENUS_DATA_SUCCESS, payload: data }));
   } catch (error) {
     dispatch(fetchDataFail({ type: FETCH_MENUS_DATA_FAIL, payload: error }));
+  }
+};
+
+export const fetchMenuData = id => async dispatch => {
+  dispatch(fetchDataRequest({ type: FETCH_MENU_DATA_REQUEST, payload: true }));
+  try {
+    const request = await axios.get('/api/data', {
+      params: {
+        id
+      }
+    });
+    const { data } = request;
+    dispatch(fetchDataSuccess({ type: FETCH_MENU_DATA_SUCCESS, payload: data }));
+  } catch (error) {
+    dispatch(fetchDataFail({ type: FETCH_MENU_DATA_FAIL, payload: error }));
   }
 };
 
