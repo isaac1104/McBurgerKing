@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { fetchMenuData } from '../actions';
-import Home from './Home/Home';
+
+const Home = lazy(() => import('./Home/Home'));
 
 class App extends Component {
   componentDidMount() {
@@ -12,9 +13,11 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path='/' component={Home} />
         </Switch>
+      </Suspense>
       </BrowserRouter>
     );
   }
