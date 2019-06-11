@@ -12,12 +12,12 @@ class Home extends Component {
     const { data } = this.props.menu;
     if (data) {
       return data.map(({ id, type, description, img }) => (
-        <Col xs={24} sm={24} md={24} lg={8} xl={8}>
+        <Col key={id} xs={24} sm={24} md={24} lg={8} xl={8}>
           <MenuCard
-            key={id}
             menu={type}
             description={description}
             img={img}
+            id={id}
           />
         </Col>
       ));
@@ -26,7 +26,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.menu.data)
     const { toggleSidebar } = this.props;
     return (
       <div className={styles.HomeContainer}>

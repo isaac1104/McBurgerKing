@@ -1,29 +1,38 @@
 import axios from 'axios';
-import { FETCH_MENU_DATA_REQUEST, FETCH_MENU_DATA_SUCCESS, FETCH_MENU_DATA_FAIL, TOGGLE_SIDEBAR, TOGGLE_MODAL } from './types';
+import { 
+  FETCH_MENUS_DATA_REQUEST, 
+  FETCH_MENUS_DATA_SUCCESS, 
+  FETCH_MENUS_DATA_FAIL, 
+  FETCH_MENU_DATA_REQUEST,
+  FETCH_MENU_DATA_SUCCESS,
+  FETCH_MENU_DATA_FAIL, 
+  TOGGLE_SIDEBAR, 
+  TOGGLE_MODAL 
+} from './types';
 
-const fetchDataRequest = () => ({
-  type: FETCH_MENU_DATA_REQUEST,
-  payload: true
+const fetchDataRequest = ({ type, payload }) => ({
+  type,
+  payload
 });
 
-const fetchDataSuccess = data => ({
-  type: FETCH_MENU_DATA_SUCCESS,
-  payload: data
+const fetchDataSuccess = ({ type, payload }) => ({
+  type,
+  payload
 });
 
-const fetchDataFail = error => ({
-  type: FETCH_MENU_DATA_FAIL,
-  payload: error
+const fetchDataFail = ({ type, payload }) => ({
+  type,
+  payload
 });
 
 export const fetchMenuData = () => async dispatch => {
-  dispatch(fetchDataRequest());
+  dispatch(fetchDataRequest({ type: FETCH_MENUS_DATA_REQUEST, payload: true }));
   try {
     const request = await axios.get('/api/data');
     const { data } = request;
-    dispatch(fetchDataSuccess(data));
+    dispatch(fetchDataSuccess({ type: FETCH_MENUS_DATA_SUCCESS, payload: data }));
   } catch (error) {
-    dispatch(fetchDataFail(error));
+    dispatch(fetchDataFail({ type: FETCH_MENUS_DATA_FAIL, payload: error }));
   }
 };
 
