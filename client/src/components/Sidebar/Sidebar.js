@@ -5,13 +5,13 @@ import { toggleSidebar } from '../../actions';
 
 class Sidebar extends Component {
   render() {
-    const { sidebar_visible } = this.props.ui_visibility;
+    const { ui_visibility: { sidebar_visible }, toggleSidebar } = this.props;
     return (
       <Drawer
         title='My Meal'
         placement='left'
         closable={false}
-        onClose={this.props.toggleSidebar}
+        onClose={toggleSidebar}
         visible={sidebar_visible}
       >
         <p>Some contents...</p>

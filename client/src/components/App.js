@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchMenuData } from '../actions';
 import Loader from './Loader/Loader';
 import Sidebar from './Sidebar/Sidebar';
+import MenuModal from './MenuModal/MenuModal';
 
 const Home = lazy(() => import('./Home/Home'));
 
@@ -31,10 +32,19 @@ class App extends Component {
     return null;
   }
 
+  renderMenuModal() {
+    const { data } = this.props.menu;
+    if (data) {
+      return <MenuModal />;
+    }
+    return null;
+  }
+
   render() {
     return (
       <>
         {this.renderSidebar()}
+        {this.renderMenuModal()}
         {this.renderHomeComponent()}
       </>
     );

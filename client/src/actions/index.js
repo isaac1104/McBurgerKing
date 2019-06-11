@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_MENU_DATA_REQUEST, FETCH_MENU_DATA_SUCCESS, FETCH_MENU_DATA_FAIL, TOGGLE_SIDEBAR } from './types';
+import { FETCH_MENU_DATA_REQUEST, FETCH_MENU_DATA_SUCCESS, FETCH_MENU_DATA_FAIL, TOGGLE_SIDEBAR, TOGGLE_MODAL } from './types';
 
 const fetchDataRequest = () => ({
   type: FETCH_MENU_DATA_REQUEST,
@@ -29,4 +29,8 @@ export const fetchMenuData = () => async dispatch => {
 
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR
+});
+
+export const toggleModal = () => ({
+  type: TOGGLE_MODAL
 });

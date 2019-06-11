@@ -12,13 +12,14 @@ const { Title } = Typography;
 
 class Home extends Component {
   render() {
+    const { toggleSidebar } = this.props;
     return (
       <div className={styles.HomeContainer}>
         <div>
         <Icon
           type='menu'
           className={styles.ToggleButton}
-          onClick={this.props.toggleSidebar}
+          onClick={toggleSidebar}
         />
           <Title>Welcome To McBurgerKing</Title>
           <Title level={3}>Where taste is king!</Title>
