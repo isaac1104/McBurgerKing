@@ -1,6 +1,5 @@
 .HomeContainer {
   height: 100vh;
-  background-color: aquamarine;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
