@@ -8,6 +8,10 @@ import styles from './MenuCard.module.css';
 const { Meta } = Card;
 
 class MenuCard extends Component {
+  capitalizeFirstLetter(string) {
+    return `${string.split('')[0].toUpperCase()}${string.slice(1)}`;
+  }
+
   render() {
     const { menu, description, img, id, fetchMenuData, toggleModal } = this.props;
     return (
@@ -20,7 +24,7 @@ class MenuCard extends Component {
         }}
         cover={<img alt={menu} src={img} className={styles.MenuImage} />}
       >
-        <Meta title={menu} description={description} />
+        <Meta title={this.capitalizeFirstLetter(menu)} description={description} />
       </Card>
     );
   }
