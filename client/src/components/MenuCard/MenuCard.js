@@ -15,7 +15,7 @@ class MenuCard extends Component {
         hoverable
         className={styles.MenuCard}
         onClick={toggleModal}
-        cover={<img alt='example' src={img} className={styles.MenuImage} />}
+        cover={<img alt={menu} src={img} className={styles.MenuImage} />}
       >
         <Meta title={menu} description={description} />
       </Card>
