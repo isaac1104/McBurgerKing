@@ -1,6 +1,5 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { fetchMenuData } from '../actions';
 
 const Home = lazy(() => import('./Home/Home'));
@@ -9,18 +8,32 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchMenuData();
   }
+
+  renderHomeComponent() {
+    const { is_fetching } = this.props.menu;
+    if (is_fetching) {
+      return <h1>Fetching Menu Data</h1>
+    }
+    return (
+      <Suspense fallback={<div>Loading App..</div>}>
+        <Home />
+      </Suspense>
+    )
+  }
   
   render() {
     return (
-      <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route exact path='/' component={Home} />
-        </Switch>
-      </Suspense>
-      </BrowserRouter>
+      <>
+        {this.renderHomeComponent()}
+      </>
     );
   }
 }
 
-export default connect(null, { fetchMenuData })(App);
+const mapStateToProps = ({ menu }) => {
+  return {
+    menu
+  };
+};
+
+export default connect(mapStateToProps, { fetchMenuData })(App);
