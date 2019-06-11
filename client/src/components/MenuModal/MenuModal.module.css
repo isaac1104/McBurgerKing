@@ -7,3 +7,9 @@
 .MenuModalLoader {
   font-size: 3em;
 }
+
+.MenuImage {
+  width: 11em;
+  height: 11em;
+  object-fit: contain;
+}

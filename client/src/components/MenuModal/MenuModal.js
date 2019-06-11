@@ -27,9 +27,14 @@ class MenuModal extends Component {
             />
           </div>
         ) : (
-          items.map(({ id, name }) => (
+          items.map(({ id, name, price, img }) => (
             <div key={id}>
-              <p>{name}</p>
+              <img 
+              src={img}
+               alt={name}
+               className={styles.MenuImage}
+                />
+              <p>{name} - ${price}</p>
             </div>
           ))
         )}
