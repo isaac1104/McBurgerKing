@@ -1,4 +1,7 @@
 .HomeContainer {
   height: 100vh;
   background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
