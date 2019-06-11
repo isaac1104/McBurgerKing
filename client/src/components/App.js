@@ -1,6 +1,7 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { fetchMenuData } from '../actions';
+import Loader from './Loader/Loader';
 
 const Home = lazy(() => import('./Home/Home'));
 
@@ -12,10 +13,10 @@ class App extends Component {
   renderHomeComponent() {
     const { is_fetching } = this.props.menu;
     if (is_fetching) {
-      return <h1>Fetching Menu Data</h1>
+      return <Loader msg='Fetching Menu Data' />;
     }
     return (
-      <Suspense fallback={<div>Loading App..</div>}>
+      <Suspense fallback={<Loader msg='Loading App' />}>
         <Home />
       </Suspense>
     )
