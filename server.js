@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(helmet());
 
-require('./routes/test_route')(app);
+require('./routes/menu_data_route')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
@@ -17,4 +17,4 @@ if (process.env.NODE_ENV === 'production') {
 
 app.listen(PORT, () => {
   console.log(`Server on PORT: ${PORT}`);
-});
+}); 
