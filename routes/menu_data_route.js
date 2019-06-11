@@ -12,6 +12,8 @@ module.exports = app => {
   });
 
   app.get('/api/data/:id', async (req, res) => {
+    console.log('hi');
+    
     try {
       const request = await axios.get(`https://api-mcburgerking.herokuapp.com/${req.params.id}`);
       const { data } = request;

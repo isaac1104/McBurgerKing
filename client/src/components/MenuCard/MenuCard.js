@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
-import { toggleModal } from '../../actions';
+import { fetchMenuData, toggleModal } from '../../actions';
 import styles from './MenuCard.module.css';
 
 const { Meta } = Card;
 
 class MenuCard extends Component {
   render() {
-    const { menu, description, img, id, toggleModal } = this.props;
+    const { menu, description, img, id, fetchMenuData, toggleModal } = this.props;
     return (
       <Card
         hoverable
         className={styles.MenuCard}
         onClick={() => {
-          console.log(id);
+          fetchMenuData(id);
           toggleModal();
         }}
         cover={<img alt={menu} src={img} className={styles.MenuImage} />}
@@ -32,4 +32,4 @@ MenuCard.propTypes = {
   img: PropTypes.string
 };
 
-export default connect(null, { toggleModal })(MenuCard);
+export default connect(null, { fetchMenuData, toggleModal })(MenuCard);

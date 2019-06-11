@@ -1,29 +1,55 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'antd';
+import { Modal, Spin, Icon } from 'antd';
 import { toggleModal } from '../../actions';
+import styles from './MenuModal.module.css';
 
 class MenuModal extends Component {
-  render() { 
-    const { ui_visibility: { modal_visible }, toggleModal } = this.props;
+  renderModal() {
+    const { ui_visibility: { modal_visible }, menu: { is_fetching, data: { items, type } }, toggleModal } = this.props;
     return (
       <Modal
         centered
-        title="Basic Modal"
+        title={is_fetching || !items ? 'Fetching Menu...' : type}
         visible={modal_visible}
         onOk={toggleModal}
         onCancel={toggleModal}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        {is_fetching || !items ? (
+          <div className={styles.MenuModalLoaderContainer}>
+            <Spin
+              indicator={
+                <Icon
+                  type='loading'
+                  className={styles.ModalLoader}
+                />
+              }
+            />
+          </div>
+        ) : (
+          items.map(({ id, name }) => (
+            <div key={id}>
+              <p>{name}</p>
+            </div>
+          ))
+        )}
       </Modal>
+    )
+  }
+
+  render() {
+    console.log(this.props.menu);
+    return (
+      <>
+        {this.renderModal()}
+      </>
     );
   }
 }
 
-const mapStateToProps = ({ ui_visibility }) => {
+const mapStateToProps = ({ menu, ui_visibility }) => {
   return {
+    menu,
     ui_visibility
   };
 };
