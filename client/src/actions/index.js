@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_MENU_DATA_REQUEST, FETCH_MENU_DATA_SUCCESS, FETCH_MENU_DATA_FAIL } from './types';
+import { FETCH_MENU_DATA_REQUEST, FETCH_MENU_DATA_SUCCESS, FETCH_MENU_DATA_FAIL, TOGGLE_SIDEBAR } from './types';
 
 const fetchDataRequest = () => ({
   type: FETCH_MENU_DATA_REQUEST,
@@ -26,3 +26,7 @@ export const fetchMenuData = () => async dispatch => {
     dispatch(fetchDataFail(error));
   }
 };
+
+export const toggleSidebar = () => ({
+  type: TOGGLE_SIDEBAR
+});

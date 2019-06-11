@@ -2,6 +2,7 @@ import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { fetchMenuData } from '../actions';
 import Loader from './Loader/Loader';
+import Sidebar from './Sidebar/Sidebar';
 
 const Home = lazy(() => import('./Home/Home'));
 
@@ -21,10 +22,19 @@ class App extends Component {
       </Suspense>
     )
   }
-  
+
+  renderSidebar() {
+    const { data } = this.props.menu;
+    if (data) {
+      return <Sidebar />;
+    }
+    return null;
+  }
+
   render() {
     return (
       <>
+        {this.renderSidebar()}
         {this.renderHomeComponent()}
       </>
     );
