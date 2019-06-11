@@ -2,7 +2,7 @@ import { FETCH_MENU_DATA_REQUEST, FETCH_MENU_DATA_SUCCESS, FETCH_MENU_DATA_FAIL 
 
 const INITIAL_STATE = {
   is_fetching: false,
-  data: [],
+  data: '',
   errorMsg: ''
 };
 
@@ -24,7 +24,7 @@ const menuReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         is_fetching: false,
-        data: [],
+        data: '',
         errorMsg: payload
       };     
     default:

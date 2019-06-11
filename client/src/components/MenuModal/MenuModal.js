@@ -4,7 +4,7 @@ import { Modal } from 'antd';
 import { toggleModal } from '../../actions';
 
 class MenuModal extends Component {
-  render() {
+  render() { 
     const { ui_visibility: { modal_visible }, toggleModal } = this.props;
     return (
       <Modal
