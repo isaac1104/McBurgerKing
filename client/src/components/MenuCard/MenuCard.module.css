@@ -1,3 +1,8 @@
 .MenuCard {
-  width: 100%;
+  width: 100%;;
+}
+
+.MenuImage {
+  height: 30em;
+  object-fit: contain;
 }

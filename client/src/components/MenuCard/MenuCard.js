@@ -10,7 +10,7 @@ const MenuCard = ({ menu, description, img }) => {
     <Card
       hoverable
       className={styles.MenuCard}
-      cover={<img alt='example' src={img} />}
+      cover={<img alt='example' src={img} className={styles.MenuImage} />}
     >
       <Meta title={menu} description={description} />
     </Card>
