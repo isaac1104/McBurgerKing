@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { fetchMenuData } from '../actions';
 import Home from './Home/Home';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchMenuData();
+  }
+  
   render() {
     return (
       <BrowserRouter>
@@ -14,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, { fetchMenuData })(App);
