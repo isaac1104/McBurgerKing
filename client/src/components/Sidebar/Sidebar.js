@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import { toggleSidebar } from '../../actions';
 
 class Sidebar extends Component {
-  componentDidMount() {
-    console.log('sidebar mounted')
-  }
-  
   render() {
     const { ui_visibility: { sidebar_visible }, toggleSidebar } = this.props;
     return (

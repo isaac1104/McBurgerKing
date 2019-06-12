@@ -13,3 +13,13 @@
   height: 11em;
   object-fit: contain;
 }
+
+.MenuItemContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MenuItemImage {
+  text-align: center;
+}

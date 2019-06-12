@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Modal, Spin, Icon } from 'antd';
+import { Modal, Spin, Icon, InputNumber } from 'antd';
 import { toggleModal } from '../../actions';
 import styles from './MenuModal.module.css';
 
@@ -32,13 +32,24 @@ class MenuModal extends Component {
           </div>
         ) : (
             items.map(({ id, name, price, img }) => (
-              <div key={id}>
-                <img
-                  src={img}
-                  alt={name}
-                  className={styles.MenuImage}
-                />
-                <p>{name} - ${price}</p>
+              <div key={id} className={styles.MenuItemContainer}>
+                <div className={styles.MenuItemImage}>
+                  <img
+                    src={img}
+                    alt={name}
+                    className={styles.MenuImage}
+                  />
+                  <p>{name}</p>
+                </div>
+                <div>
+                  <p>${price}</p>
+                  <InputNumber
+                    min={0}
+                    max={10}
+                    defaultValue={0}
+                    onChange={value => console.log(name, value)}
+                  />
+                </div>
               </div>
             ))
           )}
