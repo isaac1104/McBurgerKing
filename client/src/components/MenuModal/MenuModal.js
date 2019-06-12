@@ -5,12 +5,16 @@ import { toggleModal } from '../../actions';
 import styles from './MenuModal.module.css';
 
 class MenuModal extends Component {
+  capitalizeFirstLetter(string) {
+    return `${string.split('')[0].toUpperCase()}${string.slice(1)}`;
+  }
+
   renderModal() {
     const { ui_visibility: { modal_visible }, menu: { is_fetching, data: { items, type } }, toggleModal } = this.props;
     return (
       <Modal
         centered
-        title={is_fetching || !items ? 'Fetching Menu...' : type}
+        title={is_fetching || !items ? 'Fetching Menu...' : this.capitalizeFirstLetter(type)}
         visible={modal_visible}
         onOk={toggleModal}
         onCancel={toggleModal}
@@ -27,17 +31,17 @@ class MenuModal extends Component {
             />
           </div>
         ) : (
-          items.map(({ id, name, price, img }) => (
-            <div key={id}>
-              <img 
-              src={img}
-               alt={name}
-               className={styles.MenuImage}
+            items.map(({ id, name, price, img }) => (
+              <div key={id}>
+                <img
+                  src={img}
+                  alt={name}
+                  className={styles.MenuImage}
                 />
-              <p>{name} - ${price}</p>
-            </div>
-          ))
-        )}
+                <p>{name} - ${price}</p>
+              </div>
+            ))
+          )}
       </Modal>
     )
   }
