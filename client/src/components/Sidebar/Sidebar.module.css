@@ -14,6 +14,18 @@
   align-items: center;
 }
 
+.CartItemTotalContainer {
+  position: absolute;
+  width: 90%;
+  bottom: 0;
+}
+
+.CartItemTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 .DeleteIcon {
   margin-right: 0.5em;
 }
