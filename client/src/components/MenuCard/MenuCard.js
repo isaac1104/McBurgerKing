@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'antd';
+import { addItemsToCart } from '../../actions';
 import styles from './MenuCard.module.css';
 
 const { Meta } = Card;
@@ -21,7 +23,7 @@ class MenuCard extends Component {
             <Button
               shape='round'
               icon='shopping-cart'
-              onClick={() => console.log({ name, price, img })}
+              onClick={() => this.props.addItemsToCart({ name, price, img })}
             >
               Add To Cart
             </Button>
@@ -40,4 +42,4 @@ MenuCard.propTypes = {
   img: PropTypes.string
 };
 
-export default MenuCard;
+export default connect(null, { addItemsToCart })(MenuCard);
