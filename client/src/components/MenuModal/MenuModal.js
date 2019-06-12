@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Spin, Icon, InputNumber } from 'antd';
-import { toggleModal } from '../../actions';
+import { addItemsToCart, toggleModal } from '../../actions';
 import styles from './MenuModal.module.css';
 
 class MenuModal extends Component {
   capitalizeFirstLetter(string) {
     return `${string.split('')[0].toUpperCase()}${string.slice(1)}`;
+  }
+
+  handleAddItemsToCart(item) {
+    this.props.addItemsToCart(item);
   }
 
   renderModal() {
@@ -47,7 +51,7 @@ class MenuModal extends Component {
                     min={0}
                     max={10}
                     defaultValue={0}
-                    onChange={value => console.log(name, value)}
+                    onChange={quantity => this.handleAddItemsToCart({ name, price, img, quantity })}
                   />
                 </div>
               </div>
@@ -74,4 +78,4 @@ const mapStateToProps = ({ menu, ui_visibility }) => {
   };
 };
 
-export default connect(mapStateToProps, { toggleModal })(MenuModal);
+export default connect(mapStateToProps, { addItemsToCart, toggleModal })(MenuModal);

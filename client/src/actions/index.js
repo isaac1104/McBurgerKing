@@ -7,7 +7,8 @@ import {
   FETCH_MENU_DATA_SUCCESS,
   FETCH_MENU_DATA_FAIL, 
   TOGGLE_SIDEBAR, 
-  TOGGLE_MODAL 
+  TOGGLE_MODAL,
+  ADD_ITEMS_TO_CART 
 } from './types';
 
 const fetchDataRequest = ({ type, payload }) => ({
@@ -58,4 +59,9 @@ export const toggleSidebar = () => ({
 
 export const toggleModal = () => ({
   type: TOGGLE_MODAL
+});
+
+export const addItemsToCart = item => ({
+  type: ADD_ITEMS_TO_CART,
+  payload: item
 });

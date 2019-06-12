@@ -5,6 +5,7 @@ import { toggleSidebar } from '../../actions';
 
 class Sidebar extends Component {
   render() {
+    console.log(this.props.cart_items);
     const { ui_visibility: { sidebar_visible }, toggleSidebar } = this.props;
     return (
       <Drawer
@@ -22,8 +23,9 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = ({ ui_visibility }) => {
+const mapStateToProps = ({ cart_items, ui_visibility }) => {
   return {
+    cart_items,
     ui_visibility
   };
 };
