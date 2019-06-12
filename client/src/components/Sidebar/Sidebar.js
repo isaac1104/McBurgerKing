@@ -7,7 +7,7 @@ import styles from './Sidebar.module.css';
 class Sidebar extends Component {
   renderCartItems() {
     const { data } = this.props.cart_items;
-    return data.map(({ name, price, img }) => (
+    return data.map(({ name, price, img, quantity }) => (
       <div key={name} className={styles.CartItemRow}>
         <div className={styles.CartItemRowLeft}>
           <Icon
@@ -22,13 +22,14 @@ class Sidebar extends Component {
         </div>
         <div className={styles.CartItemRowRight}>
           <Typography>${price}</Typography>
-          <Typography>x 1</Typography>
+          <Typography>x {quantity}</Typography>
         </div>
       </div>
     ));
   }
 
   render() {
+    console.log(this.props.cart_items.data);
     const { ui_visibility: { sidebar_visible }, toggleSidebar } = this.props;
     return (
       <Drawer

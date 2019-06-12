@@ -24,7 +24,7 @@ class MenuCard extends Component {
               shape='round'
               icon='shopping-cart'
               onClick={async () => {
-                await this.props.addItemsToCart({ name, price, img });
+                await this.props.addItemsToCart({ name, price, img, quantity: 1 });
                 message.success(`${name} successfully added to the cart!`);
               }}
             >
