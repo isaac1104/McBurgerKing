@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
-import { Drawer, Typography } from 'antd';
+import { Drawer, Icon, Typography } from 'antd';
 import { connect } from 'react-redux';
-import { toggleSidebar } from '../../actions';
+import { removeItemFromCart, toggleSidebar } from '../../actions';
+import styles from './Sidebar.module.css';
 
 class Sidebar extends Component {
   renderCartItems() {
     const { data } = this.props.cart_items;
     return data.map(({ name, price, img }) => (
-      <div key={name}>
-        <Typography>{name}</Typography>
+      <div key={name} className={styles.CartItemRow}>
+        <div className={styles.CartItemRowLeft}>
+          <Icon 
+          type='delete'
+          className={styles.DeleteIcon}
+          onClick={() => this.props.removeItemFromCart(name)}
+           />
+          <Typography>{name}</Typography>
+        </div>
+        <div className={styles.CartItemRowRight}>
+          <Typography>${price}</Typography>
+          <Typography>x 1</Typography>
+        </div>
       </div>
     ));
   }
@@ -36,4 +48,4 @@ const mapStateToProps = ({ cart_items, ui_visibility }) => {
   };
 };
 
-export default connect(mapStateToProps, { toggleSidebar })(Sidebar);
+export default connect(mapStateToProps, { removeItemFromCart, toggleSidebar })(Sidebar);

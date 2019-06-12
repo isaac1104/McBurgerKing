@@ -1,0 +1,19 @@
+.CartItemRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CartItemRowLeft {
+  display: flex;
+  align-items: center;
+}
+
+.CartItemRowRight {
+  display: flex;
+  align-items: center;
+}
+
+.DeleteIcon {
+  margin-right: 0.5em;
+}

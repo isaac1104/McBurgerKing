@@ -4,7 +4,8 @@ import {
   FETCH_MENUS_DATA_SUCCESS, 
   FETCH_MENUS_DATA_FAIL, 
   TOGGLE_SIDEBAR, 
-  ADD_ITEMS_TO_CART 
+  ADD_ITEMS_TO_CART,
+  REMOVE_ITEM_FROM_CART
 } from './types';
 
 const fetchDataRequest = ({ type, payload }) => ({
@@ -39,5 +40,10 @@ export const toggleSidebar = () => ({
 
 export const addItemsToCart = item => ({
   type: ADD_ITEMS_TO_CART,
+  payload: item
+});
+
+export const removeItemFromCart = item => ({
+  type: REMOVE_ITEM_FROM_CART,
   payload: item
 });
