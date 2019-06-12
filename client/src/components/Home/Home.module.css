@@ -9,6 +9,12 @@
 
 .ToggleButton {
   position: absolute;
+  top: 0.5em;
   left: 0.5em;
   font-size: 2em;
+}
+
+.MenuItemsContainer {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }

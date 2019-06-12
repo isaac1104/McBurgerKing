@@ -30,7 +30,7 @@ class Home extends Component {
     const { toggleSidebar } = this.props;
     return (
       <div className={styles.HomeContainer}>
-        <div>
+        <div className={styles.MenuItemsContainer}>
           <Icon
             type='menu'
             className={styles.ToggleButton}
