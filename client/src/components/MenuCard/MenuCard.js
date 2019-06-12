@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Card } from 'antd';
+import { Button, Card, message } from 'antd';
 import { addItemsToCart } from '../../actions';
 import styles from './MenuCard.module.css';
 
@@ -23,7 +23,10 @@ class MenuCard extends Component {
             <Button
               shape='round'
               icon='shopping-cart'
-              onClick={() => this.props.addItemsToCart({ name, price, img })}
+              onClick={async () => {
+                await this.props.addItemsToCart({ name, price, img });
+                message.success(`${name} successfully added to the cart!`);
+              }}
             >
               Add To Cart
             </Button>

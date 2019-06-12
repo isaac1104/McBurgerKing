@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Drawer, Icon, Typography } from 'antd';
+import { Drawer, Icon, Typography, message } from 'antd';
 import { connect } from 'react-redux';
 import { removeItemFromCart, toggleSidebar } from '../../actions';
 import styles from './Sidebar.module.css';
@@ -13,7 +13,10 @@ class Sidebar extends Component {
           <Icon
             type='delete'
             className={styles.DeleteIcon}
-            onClick={() => this.props.removeItemFromCart(name)}
+            onClick={async () => {
+              await this.props.removeItemFromCart(name);
+              message.error(`Removed ${name} from the cart`);
+            }}
           />
           <Typography>{name}</Typography>
         </div>
