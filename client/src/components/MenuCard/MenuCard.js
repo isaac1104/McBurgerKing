@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
-import { fetchMenuData, toggleModal } from '../../actions';
+import { fetchMenuData } from '../../actions';
 import styles from './MenuCard.module.css';
 
 const { Meta } = Card;
@@ -13,18 +13,14 @@ class MenuCard extends Component {
   }
 
   render() {
-    const { menu, description, img, id, fetchMenuData, toggleModal } = this.props;
+    const { name, price, img } = this.props;
     return (
       <Card
         hoverable
         className={styles.MenuCard}
-        onClick={() => {
-          fetchMenuData(id);
-          toggleModal();
-        }}
-        cover={<img alt={menu} src={img} className={styles.MenuImage} />}
+        cover={<img alt={name} src={img} className={styles.MenuImage} />}
       >
-        <Meta title={this.capitalizeFirstLetter(menu)} description={description} />
+        <Meta title={name} description={`$${price}`} />
       </Card>
     );
   }
@@ -36,4 +32,4 @@ MenuCard.propTypes = {
   img: PropTypes.string
 };
 
-export default connect(null, { fetchMenuData, toggleModal })(MenuCard);
+export default connect(null, { fetchMenuData })(MenuCard);

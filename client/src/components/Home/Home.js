@@ -10,17 +10,18 @@ const { Title } = Typography;
 class Home extends Component {
   renderMenuCard() {
     const { data } = this.props.menus;
+
     if (data) {
-      return data.map(({ id, type, description, img }) => (
+      return data.map(({ items }) => items.map(({ id, name, price, img }) => (
         <Col key={id} xs={24} sm={24} md={24} lg={8} xl={8}>
           <MenuCard
-            menu={type}
-            description={description}
+            name={name}
+            price={price}
             img={img}
             id={id}
           />
         </Col>
-      ));
+      )))
     }
     return null;
   }
@@ -39,7 +40,7 @@ class Home extends Component {
           <Title level={3}>Where taste is king!</Title>
         </div>
         <div>
-        {this.renderMenuCard()}
+          {this.renderMenuCard()}
         </div>
       </div>
     );
