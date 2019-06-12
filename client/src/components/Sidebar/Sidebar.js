@@ -10,11 +10,11 @@ class Sidebar extends Component {
     return data.map(({ name, price, img }) => (
       <div key={name} className={styles.CartItemRow}>
         <div className={styles.CartItemRowLeft}>
-          <Icon 
-          type='delete'
-          className={styles.DeleteIcon}
-          onClick={() => this.props.removeItemFromCart(name)}
-           />
+          <Icon
+            type='delete'
+            className={styles.DeleteIcon}
+            onClick={() => this.props.removeItemFromCart(name)}
+          />
           <Typography>{name}</Typography>
         </div>
         <div className={styles.CartItemRowRight}>
@@ -32,6 +32,7 @@ class Sidebar extends Component {
         title='My Meal'
         placement='left'
         closable={false}
+        width={350}
         onClose={toggleSidebar}
         visible={sidebar_visible}
       >
