@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import { Drawer } from 'antd';
+import { Drawer, Typography } from 'antd';
 import { connect } from 'react-redux';
 import { toggleSidebar } from '../../actions';
 
 class Sidebar extends Component {
+  renderCartItems() {
+    const { data } = this.props.cart_items;
+    return data.map(({ name, price, img }) => (
+      <div key={name}>
+        <Typography>{name}</Typography>
+      </div>
+    ));
+  }
+
   render() {
-    console.log(this.props.cart_items);
     const { ui_visibility: { sidebar_visible }, toggleSidebar } = this.props;
     return (
       <Drawer
@@ -15,9 +23,7 @@ class Sidebar extends Component {
         onClose={toggleSidebar}
         visible={sidebar_visible}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        {this.renderCartItems()}
       </Drawer>
     );
   }
