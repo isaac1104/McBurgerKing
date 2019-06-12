@@ -3,6 +3,7 @@
 }
 
 .MenuImage {
-  height: 40em;
+  height: 15em;
   object-fit: contain;
+  padding: 2em;
 }
