@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'antd';
-import { fetchMenuData } from '../../actions';
 import styles from './MenuCard.module.css';
 
 const { Meta } = Card;
@@ -42,4 +40,4 @@ MenuCard.propTypes = {
   img: PropTypes.string
 };
 
-export default connect(null, { fetchMenuData })(MenuCard);
+export default MenuCard;

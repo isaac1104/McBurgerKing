@@ -10,16 +10,4 @@ module.exports = app => {
       res.status(400).send(error)
     }
   });
-
-  app.get('/api/data/:id', async (req, res) => {
-    console.log('hi');
-    
-    try {
-      const request = await axios.get(`https://api-mcburgerking.herokuapp.com/${req.params.id}`);
-      const { data } = request;
-      res.status(200).send(data);
-    } catch (error) {
-      res.status(400).send(error)
-    }
-  });
 };
