@@ -44,6 +44,7 @@ class Sidebar extends Component {
         <div className={styles.CartItemRowLeft}>
           <Icon
             type='delete'
+            theme='filled'
             className={styles.DeleteIcon}
             onClick={async () => {
               await this.props.removeItemFromCart(name);
