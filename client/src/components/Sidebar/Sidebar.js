@@ -7,6 +7,36 @@ import styles from './Sidebar.module.css';
 const { Title } = Typography;
 
 class Sidebar extends Component {
+  state = {
+    width: null
+  };
+
+  updateWindowWidth = () => {
+    const { innerWidth } = window;
+    if (innerWidth <= 425) {
+      return this.setState({ width: innerWidth * 0.8 });
+    }
+    if (innerWidth <= 768) {
+      return this.setState({ width: innerWidth * 0.6 });
+    }
+    if (innerWidth <= 1024) {
+      return this.setState({ width: innerWidth * 0.5 });
+    }
+    if (innerWidth <= 1440) {
+      return this.setState({ width: innerWidth * 0.4 });
+    }
+    return this.setState({ width: innerWidth * 0.3 });
+  }
+
+  componentDidMount() {
+    this.updateWindowWidth();
+    window.addEventListener('resize', this.updateWindowWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowWidth);
+  }
+
   renderCartItems() {
     const { data } = this.props.cart_items;
     return data.map(({ name, price, img, quantity }) => (
@@ -52,7 +82,7 @@ class Sidebar extends Component {
       <Drawer
         title='MY MEAL'
         placement='left'
-        width={350}
+        width={this.state.width}
         onClose={toggleSidebar}
         visible={sidebar_visible}
       >

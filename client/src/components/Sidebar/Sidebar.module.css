@@ -7,17 +7,21 @@
 .CartItemRowLeft {
   display: flex;
   align-items: center;
+  font-size: 1.5em;
 }
 
 .CartItemRowRight {
   display: flex;
   align-items: center;
+  font-size: 1.5em;
 }
 
 .CartItemTotalContainer {
   position: absolute;
+  border-top: 1px solid black;
   width: 90%;
   bottom: 0;
+  margin-bottom: 1em;
 }
 
 .CartItemTotal {
@@ -28,4 +32,35 @@
 
 .DeleteIcon {
   margin-right: 0.5em;
+  color: red;
+}
+
+@media screen and (max-width: 1440px) {
+  .CartItemRowLeft, .CartItemRowRight {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .CartItemRowLeft, .CartItemRowRight {
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .CartItemRowLeft, .CartItemRowRight {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .CartItemRowLeft, .CartItemRowRight {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .CartItemRowLeft, .CartItemRowRight {
+    font-size: 0.8em;
+  }
 }
