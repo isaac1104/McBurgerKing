@@ -23,6 +23,7 @@ class MenuCard extends Component {
             <Button
               shape='round'
               icon='shopping-cart'
+              className={styles.AddToCartButton}
               onClick={async () => {
                 await this.props.addItemsToCart({ name, price, img, quantity: 1 });
                 message.success(`${name} successfully added to the cart!`);
