@@ -48,7 +48,7 @@ class Sidebar extends Component {
             className={styles.DeleteIcon}
             onClick={async () => {
               await this.props.removeItemFromCart(name);
-              message.error(`Removed ${name} from the cart`);
+              message.success(`Removed ${name} from the cart`);
             }}
           />
           <Typography>{name}</Typography>
